@@ -1,0 +1,74 @@
+@prefixCls: wc-checkbox;
+
+.@{prefixCls} {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.@{prefixCls}--disabled {
+
+  &.@{prefixCls}-checked .@{prefixCls}-inner,
+  .@{prefixCls}-inner {
+    background-color: #f3f3f3;
+    border-color: #d9d9d9;
+    &::after {
+      border-color: #cccccc;
+    }
+  }
+}
+
+.@{prefixCls}-input {
+  position: absolute;
+  z-index: 9999;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.@{prefixCls}-inner {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #3dbcf6;
+  border-radius: 2px;
+
+  &::after {
+    content: ' ';
+  }
+}
+
+.@{prefixCls}-checked {
+  .@{prefixCls}-inner {
+    background-color: #3dbcf6;
+
+    &::after {
+      display: inline-block;
+      position: absolute;
+      left: 3px;
+      top: 1px;
+      transform: rotate(45deg);
+      content: ' ';
+      border: 2px solid #ffffff;
+      border-left: 0;
+      border-top: 0;
+      width: 5px;
+      height: 8px;
+      animation-name: checkboxIn;
+      animation-duration: 0.2s;
+    }
+  }
+}
+
+@keyframes checkboxIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
